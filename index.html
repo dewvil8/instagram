@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Clone</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* CENTRALIZA EM TELAS GRANDES */
+    min-height: 100dvh;
+}
+
+/* container principal */
+.container {
+    width: 100%;
+    max-width: 420px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* topo */
+.lang {
+    text-align: center;
+    color: #8e8e8e;
+    font-size: clamp(12px, 1.5vw, 14px); /* responsivo */
+    margin-top: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(40px, 10vh, 80px); /* adapta altura */
+}
+
+.logo img {
+    width: clamp(60px, 15vw, 70px);
+    height: auto;
+    object-fit: contain;
+}
+
+/* BLOCO CENTRAL */
+.center-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* grupo */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+/* input */
+.input-group input {
+    width: 100%;
+    height: clamp(48px, 7vh, 52px);
+    border-radius: 14px;
+    border: 0.8px solid #dbdbdb;
+    padding: 18px 16px 6px 16px;
+    font-size: clamp(13px, 1.8vw, 14px);
+    background: #fafafa;
+    outline: none;
+}
+
+/* borda ao focar */
+.input-group input:focus {
+    border: 0.4px solid #262626;
+}
+
+/* label */
+.input-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(13px, 1.8vw, 14px);
+    color: #8e8e8e;
+    pointer-events: none;
+}
+
+/* subir label */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: 10px;
+    font-size: 11px;
+    color: #8e8e8e;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* botão */
+.btn-login {
+    margin-top: 10px;
+    width: 100%;
+    height: clamp(44px, 6vh, 48px);
+    border: none;
+    border-radius: 24px;
+    background: #1877f2;
+    color: white;
+    font-weight: bold;
+    font-size: clamp(14px, 2vw, 16px);
+    cursor: pointer;
+}
+
+/* esqueceu */
+.forgot {
+    text-align: center;
+    margin-top: 18px;
+    font-size: clamp(13px, 1.8vw, 14px);
+    color: #262626;
+}
+
+/* rodapé */
+.footer {
+    margin-top: auto;
+}
+
+.btn-create {
+    width: 100%;
+    height: clamp(44px, 6vh, 48px);
+    border-radius: 24px;
+    border: 1px solid #1877f2;
+    background: transparent;
+    color: #1877f2;
+    font-weight: bold;
+    font-size: clamp(14px, 2vw, 15px);
+}
+
+.meta {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.meta img {
+    width: clamp(50px, 20vw, 10px);
+    height: auto;
+}
+</style>
+    
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="lang">Português (Brasil)</div>
+
+    <div class="logo">
+        <img src="https://static.cdninstagram.com/rsrc.php/yY/r/X32GsrNzif6.webp">
+    </div>
+
+    <div class="center-block">
+        <div class="form">
+
+            <div class="input-group">
+                <input type="text" placeholder=" " required>
+                <label>Nome de usuário, email ou celular</label>
+            </div>
+
+            <div class="input-group">
+                <input type="password" placeholder=" " required>
+                <label>Senha</label>
+            </div>
+
+            <button class="btn-login">Entrar</button>
+
+        </div>
+
+        <div class="forgot">Esqueceu a senha?</div>
+    </div>
+
+    <div class="footer">
+        <button class="btn-create">Criar nova conta</button>
+
+        <div class="meta">
+            <img src="https://logosmarcas.net/wp-content/uploads/2021/11/Meta-Logo.png">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
